@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Learning Vue</title>
+    <script src="https://unpkg.com/vue@3.0.2"></script>
+    <style>
+        body {
+            background: #eeeeee;
+            max-width: 960px;
+            margin: 20px auto;
+        }
+
+        p,
+        h3,
+        ul {
+            margin: 0;
+            padding: 0;
+        }
+
+        li {
+            list-style-type: none;
+            background: #ffffff;
+            margin: 20px auto;
+            padding: 10px 20px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        li.fav {
+            background: crimson;
+            color: white;
+        }
+
+        img {
+            width: 100px;
+            height: auto;
+        }
+
+        .shadow {
+            width: 100%;
+            background-color: white;
+            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.1);
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Hello, Vue :)</h1>
+    <div id="app">
+        <!-- attribute binding -->
+        <a v-bind:href="url1">Inixindo site | </a>
+        <a :href="url2">Inixindo Surabaya site</a>
+        <div v-if="showBooks">
+            <ul>
+                <div class="shadow">
+                    <li v-for="book in books" :class="{ fav: book.isFav }" @click="toggleFav(book)">
+                        <img :src="book.img" :alt="book.title">
+                        <h3>{{ book.title }}</h3>
+                        <p>{{ book.author }}</p>
+                    </li>
+                </div>
+            </ul>
+        </div>
+        <button @click="toggleShowBooks">
+            <span v-if="showBooks">Hide Books</span>
+            <span v-else="!showBooks">Show Books</span>
+        </button>
+    </div>
+    <script src="./app.js"></script>
+</body>
+
+</html>
